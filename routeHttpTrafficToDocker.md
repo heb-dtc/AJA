@@ -1,8 +1,13 @@
-Route HTTP trafic to docker instance (with Apache)
-Docker has been configured to map its 80 port to the host 1664 port
+### Route HTTP traffic to dokcer container using Apache
 
-add new configuration file under sites-available/
+Route HTTP trafic to docker instance (with Apache)  
+Docker has been configured to map its 80 port to the host 1664 port  
 
+- add new configuration file under  
+`/etc/apache2/sites-available/`
+
+- create a *.conf* file  
+```
 <VirtualHost *:80>
 	ServerAdmin webmaster@localhost
 	ServerName  mydomain.com
@@ -19,9 +24,10 @@ add new configuration file under sites-available/
 		Allow from all
 	</Proxy>
 </VirtualHost>
+```
 
-enable the new configuration 
-sudo a2en mydomain.conf
+- enable the new configuration  
+`$ sudo a2en mydomain.conf`
 
-reload apache
-sudo service apache2 reload
+- reload apache  
+`$ sudo service apache2 reload`
