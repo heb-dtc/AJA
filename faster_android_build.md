@@ -1,28 +1,26 @@
 # AndroidStudio on leash
 
-1. use oracle JDK instead of the openJDK
-install the oracleJDK anywhere on your system
-define an env. variable called STUDIO_JDK referencing where the oracleJDK is installed
-$ export STUDIO_JDK=<path-to-jdk-root-dir>
+- use oracle JDK instead of the openJDK  
+install the *oracleJDK* anywhere on your system  
+define an env. variable called *STUDIO_JDK* referencing where the *oracleJDK* is installed  
+`$ export STUDIO_JDK=<path-to-jdk-root-dir>`
 
-2. use latest version of gradle. this can be forced in the root build.gradle file:
+- use latest version of gradle. this can be forced in the root build.gradle file  
 ```
 task wrapper(type: Wrapper) {
     gradleVersion = 'X.X'
 }
-```
-3. Enable incremental dex build. Again add to the build.gradle of your main app module:
+```  
+- Enable incremental dex build. Again add to the build.gradle of your main app module  
 ```
 dexOptions {
         incremental true
 }
-```
-
-4. use custom gradle properties to restrain the amount of RAM Android studio/gradle can use
-in the gradle.properties file of your project or the global one for your system it is possible to 
-configure the Java process that will be used to execute your build.
-The following have proven themselves useful:
-
+```  
+- use custom gradle properties to restrain the amount of RAM Android studio/gradle can use  
+in the gradle.properties file of your project or the global one for your system it is possible to   
+configure the Java process that will be used to execute your build.  
+The following have proven themselves useful  
 ```
 org.gradle.daemon=true
 org.gradle.parallel=true
