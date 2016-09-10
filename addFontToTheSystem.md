@@ -1,7 +1,9 @@
-Create fonts dir
-mkdir ~/.local/share/fonts
+### Add font to the system  
 
-Add *.ttf files in there
+- Create fonts dir  
+`$ mkdir ~/.local/share/fonts` 
 
-Reload the font cache
-fc-cache -fv
+- Add **.ttf* files in there  
+
+- Reload the font cache  
+`$ fc-cache -fv`
