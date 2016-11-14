@@ -1,4 +1,4 @@
-### Install ArchLinux with UEFI boot mode
+### Install ArchLinux with UEFI boot mode and GRUB
 
 1. get latest arch linux ISO and write it on usb stick  
 > $ dd if=/path/to/iso/file of=/dev/sdx bs=1M && sync
@@ -39,7 +39,7 @@
 >$ wifi-menu  
 
 - proceed to installation  
->$ pacstrap /mnt base base-devel  
+> $ pacstrap /mnt base base-devel  
 
 - generate `fstab` file  
 > $ genfstab -U /mnt >> /mnt/etc/fstab  
@@ -56,9 +56,28 @@
  $ echo KEYMAP=fr >> /etc/vconsole.conf  
  $ echo 'hostname' >> /etc/hostname
  
- - generate ramfs files
+- generate ramfs files
  > $ mkinitcpio -p linux
  
- - change root password
- > $ passwd
+- change root password
+ > $ passwd  
  
+- install grub tools  
+ > $ pacman -S grub os-prober efibootmgr
+
+- check that the efi partition is mounted
+> run `$ mount` and check if the `efivars` entry is present
+ if yes, all good  
+ if no, run `$ mount -t efivarfs efivarfs /sys/firmware/efi/efivarfs`  
+
+- install grub  
+> $ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=arch_grub--recheck  
+  
+- copy the boot files (just in case^^)
+> $ mkdir /boot/EFI/boot  
+ $ cp /boot/EFI/arch_grub/grubx64.efi /boot/EFI/boot/bootx64.efi
+ 
+- finish and exit
+> $ exit
+ $ umount -R /mnt  
+ $ reboot  
