@@ -4,10 +4,11 @@
 > $ dd if=/path/to/iso/file of=/dev/sdx bs=1M && sync
 
 2. boot on the usb stick
-> might have to disable secure boot in the BIOS
+> might have to disable secure boot in the BIOS  
   $ loadkeys fr-pc
 
-3. wipe the existing data and create new partition
+3. wipe the existing data and create new partition 
+
 - create partition using `parted`  
 > $ parted  
   (parted) mklabel gpt  
@@ -16,7 +17,8 @@
   (parted) mkpart primary ext4 513MiB 20GiB  
   (parted) mkpart primary linux-swap 20GiB 28GiB  
   (parted) mkpart primary ext4 28GiB 100%  
-  (parted) q  
+  (parted) q   
+  
 - format the newly created partition  
 >  $ mkfs.fat -F32 /dev/sdx1  
   $ mkfs.ext4 /dev/sdx2  
@@ -32,8 +34,10 @@
   $ mount /dev/sdx4 /mnt/home  
   
 5. install base system  
+
 - plug ethernet cable or configure wifi
-> $ wifi-menu  
+>$ wifi-menu  
+
 - proceed to installation  
-> $ pacstrap /mnt base base-devel  
+>$ pacstrap /mnt base base-devel  
   
