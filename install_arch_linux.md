@@ -25,7 +25,7 @@
   $ mkswap /dev/sdx3  
   $ swapon /dev/sdx3  
   $ mkfs.ext4 /dev/sdx4  
-  
+
 4. mount the file system  
 > $ mount /dev/sdx2 /mnt  
   $ mmkdir /mnt/boot  
@@ -40,4 +40,25 @@
 
 - proceed to installation  
 >$ pacstrap /mnt base base-devel  
-  
+
+- generate `fstab` file  
+> $ genfstab -U /mnt >> /mnt/etc/fstab  
+
+- chroot into the /mnt directory  
+> $ arch-chroot /mnt  
+
+- configure the system  
+> $ ln -s /usr/share/zone/info/Europe/Paris /etc/localtime  
+ $ hwclock --systohc  
+ $ vi /etc/locale.gen (uncomment the local of choice)  
+ $ locale-gen  
+ $ echo LANG=en_US.UTF-8 >> /etc/locale.conf  
+ $ echo KEYMAP=fr >> /etc/vconsole.conf  
+ $ echo 'hostname' >> /etc/hostname
+ 
+ - generate ramfs files
+ > $ mkinitcpio -p linux
+ 
+ - change root password
+ > $ passwd
+ 
