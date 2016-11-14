@@ -78,6 +78,6 @@
  $ cp /boot/EFI/arch_grub/grubx64.efi /boot/EFI/boot/bootx64.efi
  
 - finish and exit
-> $ exit
+> $ exit  
  $ umount -R /mnt  
  $ reboot  
