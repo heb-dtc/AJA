@@ -11,11 +11,15 @@
  ### 2.boot the pi
  - find the pi on the local network
  > $ nmap -sP <IPADDRESSES>
+ - run rasp-config and configure whatever you may need to configure
+ > $ rasp-config
  - do potential update
  > $ sudo apt-get update  
  $ sudo apt-get dist-upgrade
  - install pip for python2
  > $ sudo apt-get install python-pip
+ - push up the volume
+ > $ aslamixer
  
  ### 3.install mopidy
  - add key to repo list
@@ -28,5 +32,18 @@
  > $ sudo pip install Mopidy-spotify
  - install spotipy 
  > $ sudo pip install spotipy
+ - install mopidy-tunein
+ > $ sudo pip install Mopidy-tunein
+ 
+ ### 4. configure mopidy
+ - edit configuration file for mopidy service 
+ > $ vim /etc/mopidy/mopidy.conf  
+  make sure the web server is reachable on your local network
+  add spotify credentials
+- enable mopidy service
+> $ systemctl enable mopidy
+- start mopidy
+> $ systemctl start mopidy
 
+ 
  
