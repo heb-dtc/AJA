@@ -54,6 +54,8 @@ bootm 0x00800000 0x01100000
 ```
 
 ### references
+- http://ftp.debian.org/debian/dists/stretch/main/installer-armel/current/images/kirkwood/u-boot/sheevaplug/
+- http://ftp.debian.org/debian/dists/stretch/main/installer-armel/current/images/kirkwood/netboot/marvell/sheevaplug/
 - https://www.cyrius.com/debian/kirkwood/sheevaplug/uboot-upgrade/
 - https://www.cyrius.com/debian/kirkwood/sheevaplug/install/
  
