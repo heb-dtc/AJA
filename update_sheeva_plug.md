@@ -52,3 +52,8 @@ tftpboot 0x01100000 uInitrd
 setenv bootargs console=ttyS0,115200n8 base-installer/initramfs-tools/driver-policy=most  
 bootm 0x00800000 0x01100000
 ```
+
+### references
+- https://www.cyrius.com/debian/kirkwood/sheevaplug/uboot-upgrade/
+- https://www.cyrius.com/debian/kirkwood/sheevaplug/install/
+ 
