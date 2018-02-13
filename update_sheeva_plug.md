@@ -7,9 +7,10 @@
 ### flashing uboot
 - start a tftp server on host machine
 > systemctl start tftp.service
-- copy the bootloader to the tftp server
-> setenv serverip 192.168.1.2 # IP of TFTP server  
-  setenv ipaddr 192.168.1.200 # IP of the sheevaplug  
+- copy the bootloader to the tftp server public directory
+- push the image on the sheevaplug internal memory
+> setenv serverip <IP of TFTP server>
+  setenv ipaddr <IP of the sheevaplug>  
   tftpboot 0x0800000 u-boot.kwb # copy the bootloader img
 
 - write the bootloader
@@ -25,3 +26,13 @@
  reset  
 
 ### flashing debian
+- copy the uImage and the uInitrd to the tftp server public directory
+- push the images on the sheevaplug internal memory
+> setenv serverip <IP of TFTP server>  
+ setenv ipaddr <IP of the sheevaplug>    
+ tftpboot 0x00800000 uImage  
+ tftpboot 0x01100000 uInitrd  
+ 
+ - start the installer
+ > setenv bootargs console=ttyS0,115200n8 base-installer/initramfs-tools/driver-policy=most  
+ bootm 0x00800000 0x01100000
