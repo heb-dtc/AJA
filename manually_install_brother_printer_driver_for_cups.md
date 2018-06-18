@@ -1,4 +1,4 @@
-### Manula installation of Brother printer driver
+### Manual installation of Brother printer driver
 
 1. make sure `cups` is installed and running on your system.
 2. Brother distribute its drivers as `.deb` or `.rpm` package. To install them on archlinux, some extra tooling is needed to extract the file from these archives. This method explains how to use the `.rpm` file.
